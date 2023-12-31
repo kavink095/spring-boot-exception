@@ -7,5 +7,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     boolean existsById(Integer integer);
+
     Customer findCustomerByCusId(int id);
+
+    boolean existsByName(String name);
+
 }

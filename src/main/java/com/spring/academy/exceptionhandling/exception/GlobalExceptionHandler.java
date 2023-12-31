@@ -20,4 +20,16 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleResourceNotFoundException(ConfigDataResourceNotFoundException e) {
         return new ResponseEntity<>("Resource not found: " + e.getMessage(), HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(RecordExistingException.class)
+    @ResponseStatus(HttpStatus.FOUND)
+    public ResponseEntity<String> handleRecordExistingException(RecordExistingException e) {
+        return new ResponseEntity<>("Record is existing: " + e.getMessage(), HttpStatus.FOUND);
+    }
+
+    @ExceptionHandler(InternalServerExceptionHandler.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseEntity<String> handleInternalServerExceptionHandler(InternalServerExceptionHandler e) {
+        return new ResponseEntity<>("Internal server exception : " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
